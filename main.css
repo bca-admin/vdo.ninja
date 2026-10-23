@@ -6587,6 +6587,25 @@ select:focus {
 /* Native controls and scrollbars follow the dark theme */
 :root {
 	color-scheme: dark;
+
+	/* Light red links (same as the OK button) */
+	--link: #ff7b72;
+	--link-hover: #ffa198;
+	--a-link: var(--link);
+	--a-visited: var(--link);
+	--a-hover: var(--link-hover);
+	--a-focus: var(--link-hover);
+	--a-active: var(--link);
+	--a-lighter-link: var(--link);
+	--a-lighter-visited: var(--link);
+	--a-lighter-hover: var(--link-hover);
+	--a-lighter-focus: var(--link-hover);
+	--a-lighter-active: var(--link);
+	--a-darker-link: var(--link);
+	--a-darker-visited: var(--link);
+	--a-darker-hover: var(--link-hover);
+	--a-darker-focus: var(--link-hover);
+	--a-darker-active: var(--link);
 }
 body {
 	scrollbar-color: var(--surface-3) var(--bg);
@@ -6613,7 +6632,48 @@ body {
 	color: var(--text);
 }
 .banner a, .prompt a {
-	color: var(--primary);
+	color: var(--link);
+}
+.banner a:hover, .prompt a:hover {
+	color: var(--link-hover);
+}
+
+/* Credits links were near-black / grey, unreadable on dark */
+.credits>a,
+.credits>a:visited,
+body.darktheme .credits>a,
+body.darktheme .credits>a:visited {
+	color: var(--link);
+}
+.credits>a:hover,
+body.darktheme .credits>a:hover {
+	color: var(--link-hover);
+}
+#alertModal a:active {
+	color: var(--link-hover);
+}
+
+/* When &background= is set (main.js puts --background-main-image inline on <html>),
+   modal backdrops show that image under a tint instead of a solid color */
+html[style*="--background-main-image"] #modalBackdrop,
+html[style*="--background-main-image"] .modalBackdrop,
+html[style*="--background-main-image"] .opaqueBackdrop {
+	background-color: var(--bg);
+	background-image: linear-gradient(rgba(13, 17, 23, 0.55), rgba(13, 17, 23, 0.55)), var(--background-main-image);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 1;
+}
+
+/* Portrait phones: keep the right side of wide backgrounds in view instead of cropping it off */
+@media (orientation: portrait) {
+	.main,
+	html[style*="--background-main-image"] #modalBackdrop,
+	html[style*="--background-main-image"] .modalBackdrop,
+	html[style*="--background-main-image"] .opaqueBackdrop {
+		background-position: 75% center;
+	}
 }
 
 /* Prompt modals — match the dark #alertModal */
@@ -6636,8 +6696,8 @@ body {
 #promptModal button[id^="submit_"],
 .promptModal button[style*="background-color: #fff"]:not([data-translate="cancel"]),
 #promptModal button[style*="background-color: #fff"]:not([data-translate="cancel"]) {
-	background: var(--primary) !important;
-	border: 1px solid var(--primary) !important;
+	background: #ff7b72 !important;
+	border: 1px solid #ff7b72 !important;
 	color: #0d1117 !important;
 	font-weight: bold;
 	padding: 6px 0;
@@ -6646,8 +6706,8 @@ body {
 #promptModal button[id^="submit_"]:hover,
 .promptModal button[style*="background-color: #fff"]:not([data-translate="cancel"]):hover,
 #promptModal button[style*="background-color: #fff"]:not([data-translate="cancel"]):hover {
-	background: #79b8ff !important;
-	border-color: #79b8ff !important;
+	background: #ffa198 !important;
+	border-color: #ffa198 !important;
 }
 .promptModal button[id^="cancel_"],
 #promptModal button[data-translate="cancel"] {
@@ -6745,7 +6805,7 @@ th {
 
 /* Chat body links */
 div#chatBody a {
-	color: var(--primary);
+	color: var(--link);
 	background-color: transparent;
 	border: 1px solid var(--border);
 	border-radius: 4px;
@@ -6773,7 +6833,7 @@ div#chatBody a {
 #alertModal a:link,
 #alertModal a:visited,
 #alertModal a:hover {
-	color: var(--primary);
+	color: var(--link);
 }
 
 /* .gowebcam active state — keep green */

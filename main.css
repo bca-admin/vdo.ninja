@@ -1283,13 +1283,13 @@ hr {
 	background: linear-gradient(145deg, #dadada, #b8b8b8);
 }
 [data-slot='1'] {
-	background-color: #aa0005
+	background-color: #00AAAA
 }
 [data-slot='2'] {
 	background-color: #FF0000
 }
 [data-slot='3'] {
-	background-color: #ff0008
+	background-color: #0000FF
 }
 [data-slot='4'] {
 	background-color: #AA00AA
@@ -1310,7 +1310,7 @@ hr {
 	background-color: #CC44AA
 }
 [data-slot='10'] {
-	background-color: #cc4448
+	background-color: #44AACC
 }
 #slotpicker{
 	box-shadow: 0 0 1px #908080;
